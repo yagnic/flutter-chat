@@ -4,13 +4,15 @@ version: 0.0.1
 homepage: null
 
 environment:
-  sdk: ">=1.19.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  rethinkdb_dart: '^2.3.2+6'
+  encrypt: ^4.1.0
+  extension: ^0.2.0
+  rethinkdb_dart: ^2.3.2+6
 
 dev_dependencies:
   flutter_test:
