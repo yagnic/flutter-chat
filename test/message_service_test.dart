@@ -20,9 +20,9 @@ void main() {
     sut = MessageService(r, connection, encryption);
   });
 
-  /*tearDown(() async {
+  tearDown(() async {
     await cleanDb(r, connection);
-  });*/
+  });
 
   final user = User.fromJson({
     'id': '1234',

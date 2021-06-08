@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 enum ReceiptStatus { sent, delivered, read }
 
 extension EnumParsing on ReceiptStatus {
@@ -17,7 +19,29 @@ class Receipt {
   final ReceiptStatus status;
   final DateTime timestamp;
   String _id;
-
-  Receipt(this.recipient, this.messageId, this.status, this.timestamp);
   String get id => _id;
+
+  Receipt({
+    @required this.recipient,
+    @required this.messageId,
+    @required this.status,
+    @required this.timestamp,
+  });
+
+  Map<String, dynamic> toJson() => {
+        'recipient': this.recipient,
+        'message_id': this.messageId,
+        'status': status.value(),
+        'timestamp': timestamp
+      };
+
+  factory Receipt.fromJson(Map<String, dynamic> json) {
+    var receipt = Receipt(
+        recipient: json['recipient'],
+        messageId: json['message_id'],
+        status: EnumParsing.fromString(json['status']),
+        timestamp: json['timestamp']);
+    receipt._id = json['id'];
+    return receipt;
+  }
 }
